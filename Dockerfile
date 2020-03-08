@@ -36,4 +36,4 @@ RUN \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
-VOLUME config_mp4_automator
+#VOLUME config_mp4_automator
