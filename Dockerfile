@@ -62,6 +62,7 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh /home/nobody/*.py && \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
+<<<<<<< HEAD
 # docker settings
 #################
 
@@ -91,3 +92,6 @@ EXPOSE 58946/udp
 
 # run script to set uid, gid and permissions
 CMD ["/bin/bash", "/usr/local/bin/init.sh"]
+=======
+#VOLUME config_mp4_automator
+>>>>>>> parent of a9b2241... Update Dockerfile
