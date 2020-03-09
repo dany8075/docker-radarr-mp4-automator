@@ -1,26 +1,4 @@
-FROM binhex/arch-int-openvpn:latest
-
-# additional files
-##################
-
-# add supervisor conf file for app
-ADD build/*.conf /etc/supervisor/conf.d/
-
-# add bash scripts to install app
-ADD build/root/*.sh /root/
-
-# add bash script to setup iptables
-ADD run/root/*.sh /root/
-
-# add bash script to run deluge
-ADD run/nobody/*.sh /home/nobody/
-
-# add python script to configure deluge
-ADD run/nobody/*.py /home/nobody/
-
-# add pre-configured config files for deluge
-ADD config/nobody/ /home/nobody/
-
+FROM linuxserver/radarr
 
 RUN \
   apt-get update && \
@@ -36,12 +14,8 @@ RUN \
   libxslt1-dev \
   zlib1g-dev
 
-# install app
-#############
-
-# make executable and run bash scripts to install app
-RUN chmod +x /root/*.sh /home/nobody/*.sh /home/nobody/*.py && \
-	/bin/bash /root/install.sh \ pip install --upgrade pip && \
+RUN \
+  pip install --upgrade pip && \
   hash -r pip && \
   pip install requests && \
   pip install requests[security] && \
@@ -62,6 +36,7 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh /home/nobody/*.py && \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 # docker settings
 #################
@@ -95,3 +70,6 @@ CMD ["/bin/bash", "/usr/local/bin/init.sh"]
 =======
 #VOLUME config_mp4_automator
 >>>>>>> parent of a9b2241... Update Dockerfile
+=======
+VOLUME config_mp4_automator
+>>>>>>> parent of 26ef175... Update Dockerfile
